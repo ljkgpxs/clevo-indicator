@@ -20,7 +20,7 @@ all: $(TARGET)
 
 install: $(TARGET)
 	@echo Install to ${DSTDIR}/bin/
-	@sudo install -m 4750 -g adm $(TARGET) ${DSTDIR}/bin/
+	@sudo install -m 4755 -g adm $(TARGET) ${DSTDIR}/bin/
 
 test: $(TARGET)
 	@sudo chown root $(TARGET)
@@ -30,7 +30,7 @@ test: $(TARGET)
 $(TARGET): $(OBJ) Makefile
 	@mkdir -p bin
 	@echo linking $(TARGET) from $(OBJ)
-	@$(CC) $(OBJ) -o $(TARGET) $(LDFLAGS) -lm
+	@$(CC) $(OBJ) -g -o $(TARGET) $(LDFLAGS) -lm
 
 clean:
 	rm $(OBJ) $(TARGET)
